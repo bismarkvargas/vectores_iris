@@ -1,0 +1,48 @@
+ROUTINE SeedData
+SeedData
+
+    ZNspace "VECTORES"
+    
+    // Configurar entorno (SSL, Tabla)
+    Write "Configurando entorno...",!
+    Set sc = ##class(User.Utils).Setup()
+    If ('sc) {
+        Write "Error en la configuración inicial: ", $SYSTEM.Status.GetErrorText(sc),!
+        Quit
+    }
+
+    // Texto que queremos que la IA "sepa"
+    Set texto = "InterSystems IRIS es una plataforma de datos que permite realizar búsquedas vectoriales nativas y crear aplicaciones RAG."
+    Set nombre = "Documento Maestro"
+
+    Write "Generando embedding...",!
+    // Generamos el embedding llamando a tu método
+    Set emb = ##class(User.Utils).ObtenerEmbedding(texto)
+
+    If (emb = "[]") || (emb = "") {
+        Write "Error: No se pudo generar el embedding. Revise la API Key o la conexión.",!
+        Quit
+    }
+
+    Write "Embedding generado correctamente.",!
+
+    // Insertamos en la tabla convirtiendo el string a tipo VECTOR
+   
+    Set insertSql = "INSERT INTO VECTORESPKG.Documentos (Nombre, Contenido, Embedding) VALUES (?, ?, TO_VECTOR(?, DOUBLE))"
+    Set tStatement = ##class(%SQL.Statement).%New()
+    Set sc = tStatement.%Prepare(insertSql)
+    
+    If ('sc) {
+        Write "Error preparando INSERT: ", $SYSTEM.Status.GetErrorText(sc), !
+        Quit
+    }
+    
+    Set tResult = tStatement.%Execute(nombre, texto, emb)
+    
+    If (tResult.%SQLCODE = 0) { 
+        Write "¡Éxito! Ya tienes un vector real en la tabla.",! 
+    } Else { 
+        Write "Error al insertar SQLCODE: ", tResult.%SQLCODE, !
+        Write "Mensaje: ", tResult.%Message, !
+    }
+    Quit

@@ -1,0 +1,6 @@
+CREATE TABLE VECTORESPKG.Documentos (
+    ID INTEGER PRIMARY KEY IDENTITY,
+    Nombre VARCHAR(255),
+    Contenido VARCHAR(MAX),
+    Embedding VECTOR(DOUBLE, 1536)
+)

@@ -1,0 +1,36 @@
+{
+    "workbench.colorTheme": "InterSystems Default Light Modern",
+    "objectscript.conn": {
+        "active": false,
+        "server": "iris-docker",
+        "ns": "VECTORES"
+    },
+    "intersystems.servers": {
+        "iris-docker": {
+            "webServer": {
+                "scheme": "http",
+                "host": "localhost",
+                "port": 52773
+            },
+            "description": "Local IRIS Docker",
+            "username": "SuperUser",
+            "password": "SYS"
+        }
+    },
+    "sqltools.connections": [
+        {
+            "namespace": "VECTORES",
+            "connectionMethod": "Server and Port",
+            "showSystem": false,
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 52773,
+            "https": false,
+            "askForPassword": false,
+            "driver": "InterSystems IRIS",
+            "name": "vector",
+            "username": "SuperUser",
+            "password": "SYS"
+        }
+    ]
+}

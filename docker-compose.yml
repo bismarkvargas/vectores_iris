@@ -1,0 +1,17 @@
+services:
+  iris:
+    image: intersystemsdc/iris-community:latest
+    container_name: iris-vectores
+    ports:
+      - "1972:1972"     # superserver
+      - "52773:52773"   # portal de administracion / API
+    environment:
+      # Opcional: la clase tambien puede leer la key desde aqui.
+      # Definila en tu shell antes de levantar: export OPENAI_API_KEY=sk-...
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - iris-data:/durable
+      - ./:/home/irisowner/src:ro
+
+volumes:
+  iris-data:

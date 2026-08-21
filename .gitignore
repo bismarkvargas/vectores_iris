@@ -1,0 +1,10 @@
+# Secretos: nunca subir la API key
+.env
+*.key
+secrets.*
+
+# Artefactos locales
+*.log
+*.bak
+.DS_Store
+Thumbs.db
