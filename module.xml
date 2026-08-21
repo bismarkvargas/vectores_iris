@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+  <Document name="vectores-iris.ZPM">
+    <Module>
+      <Name>vectores-iris</Name>
+      <Version>1.0.0</Version>
+      <Packaging>module</Packaging>
+      <Description>Demo de busqueda vectorial nativa y RAG sobre InterSystems IRIS con embeddings de OpenAI.</Description>
+      <Keywords>vector search, rag, openai, embeddings, sql, vector</Keywords>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="User.Utils.CLS"/>
+      <Resource Name="SeedData.MAC"/>
+      <Author>
+        <Person>Bismar Vargas Arias</Person>
+        <CopyrightDate>2026</CopyrightDate>
+        <License>MIT</License>
+        <Notes>Requiere una API key de OpenAI: do ##class(User.Utils).SetApiKey("sk-...")</Notes>
+      </Author>
+      <SystemRequirements Version=">=2024.1"/>
+    </Module>
+  </Document>
+</Export>

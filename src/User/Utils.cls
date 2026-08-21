@@ -23,6 +23,7 @@ ClassMethod SetApiKey(pKey As %String) As %Status
 ClassMethod Setup() As %Status
 {
     Set sc = $$$OK
+    Set tNamespace = $NAMESPACE
     
     New $NAMESPACE
     Set $NAMESPACE = "%SYS"
@@ -34,7 +35,7 @@ ClassMethod Setup() As %Status
         Write "Configuración SSL 'DefaultSSL' ya existe.",!
     }
     
-    Set $NAMESPACE = "VECTORES"
+    Set $NAMESPACE = tNamespace
     
     Set sql = "CREATE TABLE VECTORESPKG.Documentos ("_
               "ID INTEGER PRIMARY KEY IDENTITY, "_

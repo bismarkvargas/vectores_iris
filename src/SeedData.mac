@@ -1,7 +1,8 @@
 ROUTINE SeedData
 SeedData
 
-    ZNspace "VECTORES"
+    // Trabaja sobre el namespace actual (por defecto VECTORES)
+    Write "Namespace: ", $NAMESPACE, !
     
     // Configurar entorno (SSL, Tabla)
     Write "Configurando entorno...",!
